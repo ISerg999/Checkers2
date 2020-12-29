@@ -22,11 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf311d2f-8c69-4742-ac60-9689f1ed2cbd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/FigureInfoImp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/baseEngine/FigureInfo.java" afterDir="false" />
+    <list default="true" id="cf311d2f-8c69-4742-ac60-9689f1ed2cbd" name="Default Changelist" comment="Создан класс выдающий основную информацию о игровых фигурах.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/baseEngine/ChangesMade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/intermediates/DataConversion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/configs/CheckersConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/configs/CheckersConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +90,14 @@
       <option name="presentableId" value="Default" />
       <updated>1607151075350</updated>
     </task>
+    <task id="LOCAL-00001" summary="Создан класс выдающий основную информацию о игровых фигурах.">
+      <created>1609258791318</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1609258791318</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -107,5 +114,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Создан класс выдающий основную информацию о игровых фигурах." />
+    <option name="LAST_COMMIT_MESSAGE" value="Создан класс выдающий основную информацию о игровых фигурах." />
   </component>
 </project>
