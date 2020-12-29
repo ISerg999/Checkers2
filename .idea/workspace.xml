@@ -23,9 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf311d2f-8c69-4742-ac60-9689f1ed2cbd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/FiniteAutomatonSystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/FigureInfoImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/baseEngine/FigureInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/configs/CheckersConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/configs/CheckersConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

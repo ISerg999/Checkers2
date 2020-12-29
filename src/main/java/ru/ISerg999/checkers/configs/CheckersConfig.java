@@ -1,6 +1,7 @@
 package ru.ISerg999.checkers.configs;
 
 import ru.ISerg999.checkers.FiniteAutomatonSystem;
+import ru.ISerg999.checkers.checkersEngine.FigureInfoImp;
 import ru.ISerg999.checkers.utils.CPair;
 import ru.ISerg999.checkers.utils.UtilsCollection;
 
@@ -46,6 +47,12 @@ public class CheckersConfig {
         }
         return finiteAS;
     }
+
+    /**
+     * Возвращает объект основной информации о фигурах.
+     * @return объект основной информации о фигурах
+     */
+    public FigureInfoImp figureInfo() { return figureInfoImp; }
 
     // ---------------------------------------------------- Private ----------------------------------------------------
 
@@ -159,4 +166,6 @@ public class CheckersConfig {
     }
     // Объект конечных автоматов.
     private FiniteAutomatonSystem finiteAS = null;
+    // Объект основной информации по игровым фигурам.
+    private final FigureInfoImp figureInfoImp = new FigureInfoImp();
 }
