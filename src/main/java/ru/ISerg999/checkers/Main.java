@@ -26,6 +26,7 @@ public class Main {
         ui.putImage(ui.getProperty("Path.Image.Figures"), ui.getProperty("Info.Image.Figures"));
 
         // Инициализируем систему конечных автоматов.
+        FiniteAutomatonSystem fAS = CheckersConfig.getInst().finiteAutomatonSystem();
         Map<String, Object> mapObjFas = new HashMap<>();
         String[] tmp;
 //        tmp = jMainWindow.getClass().getName().split("\\.");
@@ -36,10 +37,9 @@ public class Main {
 //        mapObjFas.put(tmp[tmp.length - 1], rightPanelEdition);
 //        tmp = rightPanelGaming.getClass().getName().split("\\.");
 //        mapObjFas.put(tmp[tmp.length - 1], rightPanelGaming);
-//        fAS.setMapObjects(mapObjFas);
+        fAS.setMapObjects(mapObjFas);
 //        fAS.takeAction("ToInit");
 
     }
-    // ---------------------------------------------------- Private ----------------------------------------------------
 
 }
