@@ -22,22 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf311d2f-8c69-4742-ac60-9689f1ed2cbd" name="Default Changelist" comment="Подкорректирован класс конфигурации. Добавлен класс игровой доски.">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_11_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_11_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_11_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/ControlBoardCheckers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/ETypeState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/baseEngine/ControlBoard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/intermediates/StatusBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Checkers2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Checkers2.iml" afterDir="false" />
+    <list default="true" id="cf311d2f-8c69-4742-ac60-9689f1ed2cbd" name="Default Changelist" comment="Немного изменил классы информация о фигурах и класс доски. В класс утилит добавлены методы для преобразования в JSON строку и обратно. Добавлены не полностью класс контроля доски и промежуточный класс параметров состояния доски.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/FigureInfoImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/FigureInfoImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/GameBoardCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/GameBoardCheckers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/configs/CheckersConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/configs/CheckersConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/utils/UtilsCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/utils/UtilsCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/ControlBoardCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/ControlBoardCheckers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/intermediates/StatusBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/intermediates/StatusBoard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609470450107</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Немного изменил классы информация о фигурах и класс доски. В класс утилит добавлены методы для преобразования в JSON строку и обратно. Добавлены не полностью класс контроля доски и промежуточный класс параметров состояния доски.">
+      <created>1609485612099</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1609485612099</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,6 +139,8 @@
     <MESSAGE value="Создан класс выдающий основную информацию о игровых фигурах." />
     <MESSAGE value="Создан клас изменений на игровой доске." />
     <MESSAGE value="Подкорректирован класс конфигурации. Добавлен класс игровой доски." />
-    <option name="LAST_COMMIT_MESSAGE" value="Подкорректирован класс конфигурации. Добавлен класс игровой доски." />
+    <MESSAGE value="Немного изменил классы информация о фигурах и класс доски. В класс утилит добавлены методы для преобразования в JSON строку и обратно. Добавлены класс контроля доски и промежуточный класс параметров состояния доски." />
+    <MESSAGE value="Немного изменил классы информация о фигурах и класс доски. В класс утилит добавлены методы для преобразования в JSON строку и обратно. Добавлены не полностью класс контроля доски и промежуточный класс параметров состояния доски." />
+    <option name="LAST_COMMIT_MESSAGE" value="Немного изменил классы информация о фигурах и класс доски. В класс утилит добавлены методы для преобразования в JSON строку и обратно. Добавлены не полностью класс контроля доски и промежуточный класс параметров состояния доски." />
   </component>
 </project>

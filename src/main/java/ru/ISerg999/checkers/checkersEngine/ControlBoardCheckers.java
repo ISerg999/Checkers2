@@ -19,15 +19,15 @@ public class ControlBoardCheckers extends ControlBoard {
     public String getStateGame() {
         int tmp = 0;
         StatusBoard sb = cCfg.statusBoard();
-        sb.setStatusGame(status);
-        sb.setGameBoard(board.dataToStr());
-        sb.setColorFigure(colorFigure);
+        sb.statusGame = status;
+        sb.gameBoard = board.dataToStr();
+        sb.colorFigure = colorFigure;
         if (ETypeState.BaseModeInterrupt == status || ETypeState.GameMode == status || ETypeState.EditMode == status) {
-            sb.setChanges(changes.getChanges());
+            sb.changes = changes.getChanges();
             if (ETypeState.BaseModeInterrupt != status) {
                 if (!checkingSeeFigureOnBoard(FigureInfoImp.CONST_COLOR_WHITE, board)) tmp = 1;
                 if (!checkingSeeFigureOnBoard(FigureInfoImp.CONST_COLOR_BLACK, board)) tmp += 2;
-                sb.setStateBoard(tmp);
+                sb.stateBoard = tmp;
                 if (ETypeState.GameMode == status) {
                     // TODO: Заполнить вожможные атаки текущими фигурами, если таковы есть.
                     // TODO: Заполнить вожможные ходы текущими фигурами, если нет атак.
@@ -64,7 +64,15 @@ public class ControlBoardCheckers extends ControlBoard {
 
     @Override
     protected boolean checkingSeeFigureOnBoard(int curColor, GameBoard board) {
-        // TODO:
-        return true;
+        curColor = curColor % fInfo.maxNumberColorFigures();
+        // TODO: Метод проверяющий есть ли хоть одна фигура заданного цвета, и если есть, то есть ли возможность для фигур заданного цвета сделать ход или атаковать. Если есть то true, иначе false.
+        // TODO: Временный метод:
+        int[][] b = board.getBoard();
+        for (int[] row: b) {
+            for (int f: row) {
+                if (f % fInfo.maxNumberColorFigures() == curColor) return true;
+            }
+        }
+        return false;
     }
 }

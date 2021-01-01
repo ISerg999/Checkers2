@@ -1,7 +1,5 @@
 package ru.ISerg999.checkers;
 
-import ru.ISerg999.checkers.checkersEngine.ControlBoardCheckers;
-import ru.ISerg999.checkers.checkersEngine.GameBoardCheckers;
 import ru.ISerg999.checkers.configs.CheckersConfig;
 import ru.ISerg999.checkers.utils.UtilsCollection;
 
@@ -45,8 +43,6 @@ public class Main {
 //        fAS.takeAction("ToInit");
 
         // Test
-        ControlBoardCheckers cbc = cCfg.controlBoardCheckers();
-        System.out.println(cbc.getStateGame());
     }
 
 }
