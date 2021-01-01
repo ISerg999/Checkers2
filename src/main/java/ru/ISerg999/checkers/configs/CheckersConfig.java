@@ -2,6 +2,7 @@ package ru.ISerg999.checkers.configs;
 
 import ru.ISerg999.checkers.FiniteAutomatonSystem;
 import ru.ISerg999.checkers.checkersEngine.FigureInfoImp;
+import ru.ISerg999.checkers.checkersEngine.GameBoardCheckers;
 import ru.ISerg999.checkers.utils.CPair;
 import ru.ISerg999.checkers.utils.UtilsCollection;
 
@@ -37,14 +38,6 @@ public class CheckersConfig {
      * @return объект конечных автоматов
      */
     public FiniteAutomatonSystem finiteAutomatonSystem() {
-        if (null == finiteAS) {
-            finiteAS = new FiniteAutomatonSystem(
-                    automationSystemStates.get(0),
-                    automationSystemStates,
-                    automationSystemActions,
-                    automationSystemActionPerformed()
-            );
-        }
         return finiteAS;
     }
 
@@ -54,10 +47,35 @@ public class CheckersConfig {
      */
     public FigureInfoImp figureInfo() { return figureInfoImp; }
 
+    /**
+     * Получение объекта доски.
+     * @return объект доски
+     */
+    public GameBoardCheckers gameBoardCheckers() { return new GameBoardCheckers(); }
+
+    /**
+     * Получение объекта доски на основе строки.
+     * @param strBoard строка доски
+     * @return объект доски
+     */
+    public GameBoardCheckers gameBoardCheckers(String strBoard) { return new GameBoardCheckers(strBoard); }
+
+    /**
+     * Получение объекта доски на основе другого объекта доски.
+     * @param other копируемый объект доски
+     * @return объект доски
+     */
+    public GameBoardCheckers gameBoardCheckers(GameBoardCheckers other) { return new GameBoardCheckers(other); }
+
     // ---------------------------------------------------- Private ----------------------------------------------------
 
     // Объект коллекции утилит.
-    private final UtilsCollection utilsCollection = new UtilsCollection();
+    private final UtilsCollection utilsCollection;
+    // Объект конечных автоматов.
+    private final FiniteAutomatonSystem finiteAS;
+    // Объект основной информации по игровым фигурам.
+    private final FigureInfoImp figureInfoImp;
+
     // Список возможных состояний для конечного автомата.
     private final List<String> automationSystemStates = Arrays.asList(
             "None",         // Состояние в момент начальной инициализации. А также указывает, либо действие состояние не меняет, либо что действие выполняется при любом состоянии.
@@ -101,7 +119,16 @@ public class CheckersConfig {
     private static class CheckersConfigHolder {
         private static final CheckersConfig INSTANCE = new CheckersConfig();
     }
-    private CheckersConfig() {}
+    private CheckersConfig() {
+        utilsCollection = new UtilsCollection();
+        finiteAS = new FiniteAutomatonSystem(
+                automationSystemStates.get(0),
+                automationSystemStates,
+                automationSystemActions,
+                automationSystemActionPerformed()
+        );
+        figureInfoImp = new FigureInfoImp();
+    }
 
     /**
      * Создаёт таблицу действий конечного автомата.
@@ -164,8 +191,5 @@ public class CheckersConfig {
 ////        actionPerformed.put(new CPair<>(tmp, ""), new String[] { });
         return actionPerformed;
     }
-    // Объект конечных автоматов.
-    private FiniteAutomatonSystem finiteAS = null;
-    // Объект основной информации по игровым фигурам.
-    private final FigureInfoImp figureInfoImp = new FigureInfoImp();
+
 }

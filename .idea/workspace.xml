@@ -22,10 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf311d2f-8c69-4742-ac60-9689f1ed2cbd" name="Default Changelist" comment="Создан класс выдающий основную информацию о игровых фигурах.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/baseEngine/ChangesMade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/intermediates/DataConversion.java" afterDir="false" />
+    <list default="true" id="cf311d2f-8c69-4742-ac60-9689f1ed2cbd" name="Default Changelist" comment="Создан клас изменений на игровой доске.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/GameBoardCheckers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/baseEngine/GameBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/configs/CheckersConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/configs/CheckersConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609258791318</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Создан клас изменений на игровой доске.">
+      <created>1609259385231</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1609259385231</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -115,6 +124,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Создан класс выдающий основную информацию о игровых фигурах." />
-    <option name="LAST_COMMIT_MESSAGE" value="Создан класс выдающий основную информацию о игровых фигурах." />
+    <MESSAGE value="Создан клас изменений на игровой доске." />
+    <option name="LAST_COMMIT_MESSAGE" value="Создан клас изменений на игровой доске." />
   </component>
 </project>

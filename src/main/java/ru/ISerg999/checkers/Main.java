@@ -1,5 +1,6 @@
 package ru.ISerg999.checkers;
 
+import ru.ISerg999.checkers.checkersEngine.GameBoardCheckers;
 import ru.ISerg999.checkers.configs.CheckersConfig;
 import ru.ISerg999.checkers.utils.UtilsCollection;
 
@@ -18,7 +19,9 @@ public class Main {
      * Базовая инициализация.
      */
     public void init() {
-        UtilsCollection ui = CheckersConfig.getInst().getUtils();
+        CheckersConfig cCfg = CheckersConfig.getInst();
+
+        UtilsCollection ui = cCfg.getUtils();
         ui.setFileProperties("checkers.properties");
         // Загружаем в кэш изпользуемые изображения.
         ui.putImage(ui.getProperty("Path.Icon.Window"), ui.getProperty("Info.Icon.Window"));
@@ -26,7 +29,7 @@ public class Main {
         ui.putImage(ui.getProperty("Path.Image.Figures"), ui.getProperty("Info.Image.Figures"));
 
         // Инициализируем систему конечных автоматов.
-        FiniteAutomatonSystem fAS = CheckersConfig.getInst().finiteAutomatonSystem();
+        FiniteAutomatonSystem fAS = cCfg.finiteAutomatonSystem();
         Map<String, Object> mapObjFas = new HashMap<>();
         String[] tmp;
 //        tmp = jMainWindow.getClass().getName().split("\\.");
@@ -39,6 +42,8 @@ public class Main {
 //        mapObjFas.put(tmp[tmp.length - 1], rightPanelGaming);
         fAS.setMapObjects(mapObjFas);
 //        fAS.takeAction("ToInit");
+
+        // Test
 
     }
 
