@@ -10,8 +10,9 @@ public class GameBoardCheckers extends GameBoard {
         super(8, 8);
         dataFromStr(strGameBoard);
     }
-    public GameBoardCheckers(GameBoard gameBoard) {
+    public GameBoardCheckers(GameBoardCheckers gameBoard) {
         super(8, 8);
+        System.out.println(gameBoard);
         dataFromStr(gameBoard.dataToStr());
     }
 
@@ -20,8 +21,8 @@ public class GameBoardCheckers extends GameBoard {
         clear();
         for (int y = 0; y < 3; y += 1) {
             for (int x = 0; x < width; x += 1) {
-                if (checkCoordinatesOutBoard(x, y)) board[7 - y][x] = figureInfo.allAvailableFieldStates().get(1);
-                else board[y][x] = figureInfo.allAvailableFieldStates().get(3);
+                if (checkCoordinatesOutBoard(x, y)) board[7 - y][x] = FigureInfoImp.CONST_FIGURE_CHECKERS + FigureInfoImp.CONST_COLOR_WHITE;
+                else board[y][x] = FigureInfoImp.CONST_FIGURE_CHECKERS + FigureInfoImp.CONST_COLOR_BLACK;
             }
         }
     }

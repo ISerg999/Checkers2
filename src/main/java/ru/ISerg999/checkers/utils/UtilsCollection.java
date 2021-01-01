@@ -1,5 +1,8 @@
 package ru.ISerg999.checkers.utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -17,6 +20,7 @@ public class UtilsCollection {
     public UtilsCollection() {
         cacheImage = new HashMap<>();
         property = new Properties();
+        objectMapper = new ObjectMapper();
     }
 
     /**
@@ -117,10 +121,45 @@ public class UtilsCollection {
         }
     }
 
+    /**
+     * Получает значение параметра из свойств.
+     * @param key ключ параметра
+     * @return параметр из свойств
+     */
     public String getProperty(String key) { return property.getProperty(key); }
+
+    /**
+     * Преобразует объект в строку JSON.
+     * @param value объект
+     * @return строка JSON, или пустая строка, если преобразование не удалось
+     */
+    public String ObjToJson(Object value) {
+        String res = "";
+        try {
+            res = objectMapper.writeValueAsString(value);
+        } catch (JsonProcessingException e) { }
+        return res;
+    }
+
+    /**
+     * Преобразует строку JSON в заданный объект
+     * @param strJson   строка JSON
+     * @param valueType  тип объекта (например: Player.class)
+     * @param <T>        Имя класса объекта
+     * @return получаемый объект, или null, если не удалось
+     */
+    public <T> T ObjFromJson(String strJson, Class<T> valueType) {
+        T res = null;
+        try {
+            res = objectMapper.readValue(strJson, valueType);
+        } catch (JsonProcessingException e) { }
+        return res;
+    }
 
     // ---------------------------------------------------- Private ----------------------------------------------------
 
+    // Объект преобразования в Json и обратно.
+    private static ObjectMapper objectMapper;
     // Кэш запрашиваемых изображений.
     private Map<String, ImageIcon> cacheImage;
     // Свойства.

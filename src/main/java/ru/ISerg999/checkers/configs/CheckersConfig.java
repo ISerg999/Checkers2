@@ -1,8 +1,11 @@
 package ru.ISerg999.checkers.configs;
 
 import ru.ISerg999.checkers.FiniteAutomatonSystem;
+import ru.ISerg999.checkers.checkersEngine.ControlBoardCheckers;
 import ru.ISerg999.checkers.checkersEngine.FigureInfoImp;
 import ru.ISerg999.checkers.checkersEngine.GameBoardCheckers;
+import ru.ISerg999.checkers.checkersEngine.baseEngine.ChangesMade;
+import ru.ISerg999.checkers.checkersEngine.intermediates.StatusBoard;
 import ru.ISerg999.checkers.utils.CPair;
 import ru.ISerg999.checkers.utils.UtilsCollection;
 
@@ -66,6 +69,12 @@ public class CheckersConfig {
      * @return объект доски
      */
     public GameBoardCheckers gameBoardCheckers(GameBoardCheckers other) { return new GameBoardCheckers(other); }
+
+    public ChangesMade changesMade() { return new ChangesMade(); }
+
+    public ControlBoardCheckers controlBoardCheckers() { return new ControlBoardCheckers(); }
+
+    public StatusBoard statusBoard() { return new StatusBoard(); }
 
     // ---------------------------------------------------- Private ----------------------------------------------------
 
