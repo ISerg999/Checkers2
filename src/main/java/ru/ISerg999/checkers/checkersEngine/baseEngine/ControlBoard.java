@@ -65,4 +65,17 @@ public abstract class ControlBoard {
      */
     protected abstract boolean setColorFigure(int cFigure);
 
+    /**
+     * Установка параметров игры.
+     * @param value объект с параметрами игры (StatusBoard)
+     * @return true - действие совершено, false - ошибка, действие не совершено
+     */
+    protected abstract boolean setParamGame(String value);
+
+    /**
+     * Начать редактирование.
+     * @return true - действие совершено, false - ошибка, действие не совершено
+     */
+    protected abstract boolean startEdition();
+
 }

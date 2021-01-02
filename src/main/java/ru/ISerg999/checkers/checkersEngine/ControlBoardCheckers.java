@@ -1,5 +1,6 @@
 package ru.ISerg999.checkers.checkersEngine;
 
+import ru.ISerg999.checkers.checkersEngine.baseEngine.ChangesMade;
 import ru.ISerg999.checkers.checkersEngine.baseEngine.ControlBoard;
 import ru.ISerg999.checkers.checkersEngine.baseEngine.GameBoard;
 import ru.ISerg999.checkers.checkersEngine.intermediates.StatusBoard;
@@ -21,6 +22,7 @@ public class ControlBoardCheckers extends ControlBoard {
     @Override
     public String commandExec(String cmd) {
         if (!(null == cmd || cmd.isEmpty())) {
+            cmd = cmd.toLowerCase().trim();
             int tmp;
             String valeCmd;
             if (cmd.startsWith(EListCommands.GetStatus.getCmd())) return getStateGame(); // Получаем статус команд
@@ -46,13 +48,16 @@ public class ControlBoardCheckers extends ControlBoard {
                 } else if (cmd.startsWith(EListCommands.BoardToStart.getCmd())) { // Делает текущую доску стартовой.
                     if (boardToStart()) return RESULT_OK;
                 } else if (cmd.startsWith(EListCommands.ChangeColorFigure.getCmd())) { // Задаёт текущий цвет фигур, или следующий цвет.
-                    valeCmd = cmd.substring(EListCommands.ChangeColorFigure.getCmd().length());
+                    valeCmd = cmd.substring(EListCommands.ChangeColorFigure.getCmd().length()).trim();
                     if (valeCmd.isEmpty() || '-' == valeCmd.charAt(0)) tmp = -1;
                     else tmp = Integer.parseUnsignedInt(valeCmd, 16);
                     if (setColorFigure(tmp)) changes.add(cmd);
+                } else if (cmd.startsWith(EListCommands.SetParamGame.getCmd())) { // Установка внешних параметров игры.
+                    valeCmd = cmd.substring(EListCommands.SetParamGame.getCmd().length()).trim();
+                    if (setParamGame(valeCmd)) return getStateGame();
+                } else if (cmd.startsWith(EListCommands.StartEdition.getCmd())) { // Начать редактирование.
+                    if (startEdition()) return RESULT_OK;
                 }
-                // TODO: Установка полных данных по текущей игре.
-                // TODO: Начать редактирование.
                 // TODO: Продолжить игру. Сделать начальный анализ состояния фигур.
                 // TODO: Начать игру. Сделать начальный анализ состояния фигур.
                 // TODO: Установка времени в секундах на один ход.
@@ -110,7 +115,7 @@ public class ControlBoardCheckers extends ControlBoard {
         sb.gameBoard = board.dataToStr();
         sb.colorFigure = colorFigure;
         if (ETypeState.BaseModeStart == status || ETypeState.BaseModeInterrupt == status || ETypeState.GameMode == status || ETypeState.EditMode == status) {
-            sb.changes = changes.getChanges();
+            sb.changes = changes.dataToStr();
             if (ETypeState.GameMode == status || ETypeState.EditMode == status) {
                 if (!checkingSeeFigureOnBoard(FigureInfoImp.CONST_COLOR_WHITE, board)) tmp = 1;
                 if (!checkingSeeFigureOnBoard(FigureInfoImp.CONST_COLOR_BLACK, board)) tmp += 2;
@@ -148,6 +153,30 @@ public class ControlBoardCheckers extends ControlBoard {
         if (cFigure < 0) colorFigure += 1;
         else colorFigure = cFigure;
         colorFigure = colorFigure % fInfo.maxNumberColorFigures();
+        return true;
+    }
+
+    @Override
+    protected boolean setParamGame(String value) {
+        if (ETypeState.GameMode == status || ETypeState.EditMode == status) return false;
+        StatusBoard sb = ui.ObjFromJson(value, StatusBoard.class);
+        if (null == sb || sb.stateBoard != 0) return false;
+        status = sb.statusGame;
+        board = new GameBoardCheckers(sb.gameBoard);
+        colorFigure = sb.colorFigure;
+        changes.dataFromStr(sb.changes);
+        // TODO: Заполнить возможные атаки текущими фигурами, если не null.
+        // TODO: Заполнить возможные ходы текущими фигурами, если не null.
+        return true;
+    }
+
+    @Override
+    protected boolean startEdition() {
+        if (ETypeState.EditMode == status || ETypeState.GameMode == status) return false;
+        boardTmp = new GameBoardCheckers((GameBoardCheckers) board);
+        changesTmp = new ChangesMade(changes);
+        colorFigureTmp = colorFigure;
+        status = ETypeState.EditMode;
         return true;
     }
 }

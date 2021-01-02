@@ -2,9 +2,6 @@ package ru.ISerg999.checkers.checkersEngine.intermediates;
 
 import ru.ISerg999.checkers.checkersEngine.ETypeState;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class StatusBoard {
     // ---------------------------------------------------- Public -----------------------------------------------------
 
@@ -25,7 +22,7 @@ public class StatusBoard {
     // Цвет игрока для текущего хода.
     public int colorFigure;
     // Изменения проделанные к текущему моменту.
-    public List<String > changes;
+    public String changes;
     // Результат проверки состояния доски:
     // * отрицательное - неопределенность
     // * 0 - на доски есть все цвета фигур, и у каждого есть хотя бы один ход или атака.
