@@ -78,4 +78,15 @@ public abstract class ControlBoard {
      */
     protected abstract boolean startEdition();
 
+    /**
+     * Очистка содержимого доски.
+     * @return true - действие совершено, false - ошибка, действие не совершено
+     */
+    protected abstract boolean clearBoard();
+
+    /**
+     * Расстановка фигур в базовую позицию.
+     * @return true - действие совершено, false - ошибка, действие не совершено
+     */
+    protected abstract boolean basicPositionBoard();
 }

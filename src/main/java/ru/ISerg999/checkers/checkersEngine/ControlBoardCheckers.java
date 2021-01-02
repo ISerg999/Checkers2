@@ -27,8 +27,19 @@ public class ControlBoardCheckers extends ControlBoard {
             String valeCmd;
             if (cmd.startsWith(EListCommands.GetStatus.getCmd())) return getStateGame(); // Получаем статус команд
             if (ETypeState.EditMode == status) { // В режиме редактирования.
-                // TODO: Очистка содержимого доски.
-                // TODO: Базовая расстановка фигур на доске.
+                if (cmd.startsWith(EListCommands.CleaningBoardInEdit.getCmd())) { // Очистка доски.
+                    if (clearBoard()) {
+                        valeCmd = board.dataToStr();
+                        changes.add(cmd + "@" + valeCmd);
+                        return RESULT_OK;
+                    }
+                } else if (cmd.startsWith(EListCommands.BasicPositionInEdit.getCmd())) { // Расстановка фигур в базовую позицию.
+                    if (basicPositionBoard()) {
+                        valeCmd = board.dataToStr();
+                        changes.add(cmd + "@" + valeCmd);
+                        return RESULT_OK;
+                    }
+                }
                 // TODO: Установка фигуры.
                 // TODO: Удаление фигуры.
                 // TODO: Закрытие с отменой.
@@ -175,8 +186,23 @@ public class ControlBoardCheckers extends ControlBoard {
         if (ETypeState.EditMode == status || ETypeState.GameMode == status) return false;
         boardTmp = new GameBoardCheckers((GameBoardCheckers) board);
         changesTmp = new ChangesMade(changes);
+        changes.clear();
         colorFigureTmp = colorFigure;
         status = ETypeState.EditMode;
+        return true;
+    }
+
+    @Override
+    protected boolean clearBoard() {
+        if (ETypeState.EditMode != status) return false;
+        board.clear();
+        return true;
+    }
+
+    @Override
+    protected boolean basicPositionBoard() {
+        if (ETypeState.EditMode != status) return false;
+        board.setBasePosition();
         return true;
     }
 }
