@@ -22,7 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf311d2f-8c69-4742-ac60-9689f1ed2cbd" name="Default Changelist" comment="Класс контроля игровой доски добавлено: Установка внешних параметров и Начать редактирование.">
+    <list default="true" id="cf311d2f-8c69-4742-ac60-9689f1ed2cbd" name="Default Changelist" comment="В режиме редактирование в классе контроллера игровой доске сделаны: Очистка игровой доски и Установка фигур в базовое положение.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/ControlBoardCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/ControlBoardCheckers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/EListCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ISerg999/checkers/checkersEngine/EListCommands.java" afterDir="false" />
@@ -140,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609593303637</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="В режиме редактирование в классе контроллера игровой доске сделаны: Очистка игровой доски и Установка фигур в базовое положение.">
+      <created>1609595087520</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1609595087520</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -165,6 +172,7 @@
     <MESSAGE value="Рефрактинг промежуточного класса состояния доски." />
     <MESSAGE value="Рефрактинг класса контроля доски. Добавлены Расстановка как на стартовой доске, Сделать текущую расстановку стартовой и Смена цвета текущей фигуры." />
     <MESSAGE value="Класс контроля игровой доски добавлено: Установка внешних параметров и Начать редактирование." />
-    <option name="LAST_COMMIT_MESSAGE" value="Класс контроля игровой доски добавлено: Установка внешних параметров и Начать редактирование." />
+    <MESSAGE value="В режиме редактирование в классе контроллера игровой доске сделаны: Очистка игровой доски и Установка фигур в базовое положение." />
+    <option name="LAST_COMMIT_MESSAGE" value="В режиме редактирование в классе контроллера игровой доске сделаны: Очистка игровой доски и Установка фигур в базовое положение." />
   </component>
 </project>

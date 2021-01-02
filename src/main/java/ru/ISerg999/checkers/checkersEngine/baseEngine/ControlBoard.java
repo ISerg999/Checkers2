@@ -47,6 +47,14 @@ public abstract class ControlBoard {
     protected abstract String getStateGame();
 
     /**
+     * Получение фигуры находящейся в заданных координатах.
+     * @param x координата x
+     * @param y координата y
+     * @return фигура, или отрицательное значение
+     */
+    protected abstract int getPosition(int x, int y);
+
+    /**
      * Заполняет текущее расположение фигур на доске из базового расположения.
      * @return true - действие совершено, false - ошибка, действие не совершено
      */
@@ -89,4 +97,21 @@ public abstract class ControlBoard {
      * @return true - действие совершено, false - ошибка, действие не совершено
      */
     protected abstract boolean basicPositionBoard();
+
+    /**
+     * Установка фигуры в заданной позиции.
+     * @param x координата x
+     * @param y координата y
+     * @param f устанавливаемая фигура
+     * @return предыдущее значение поля, либо отрицательное значение, если ошибка
+     */
+    protected abstract int setPosition(int x, int y, int f);
+
+    /**
+     * Удаление фигуры в заданной позиции.
+     * @param x координата x
+     * @param y координата y
+     * @return предыдущее значение поля, либо отрицательное значение,если ошибка
+     */
+    protected abstract int removePosition(int x, int y);
 }

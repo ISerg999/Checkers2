@@ -23,9 +23,18 @@ public class ControlBoardCheckers extends ControlBoard {
     public String commandExec(String cmd) {
         if (!(null == cmd || cmd.isEmpty())) {
             cmd = cmd.toLowerCase().trim();
-            int tmp;
-            String valeCmd;
+            int x, y, f;
+            String valeCmd, strTmp;
             if (cmd.startsWith(EListCommands.GetStatus.getCmd())) return getStateGame(); // Получаем статус команд
+            else if (cmd.startsWith(EListCommands.GetFigure.getCmd())) { // Получение фигуры по её координатам.
+                valeCmd = cmd.substring(EListCommands.GetFigure.getCmd().length()).trim();
+                if (valeCmd.length() > 1) {
+                    x = Integer.parseUnsignedInt(valeCmd.substring(0, 1), 16);
+                    y = Integer.parseUnsignedInt(valeCmd.substring(1, 2), 16);
+                    f = getPosition(x, y);
+                    return f < 0? "-": String.format("%x", f);
+                }
+            }
             if (ETypeState.EditMode == status) { // В режиме редактирования.
                 if (cmd.startsWith(EListCommands.CleaningBoardInEdit.getCmd())) { // Очистка доски.
                     if (clearBoard()) {
@@ -39,13 +48,40 @@ public class ControlBoardCheckers extends ControlBoard {
                         changes.add(cmd + "@" + valeCmd);
                         return RESULT_OK;
                     }
+                } else if (cmd.startsWith(EListCommands.SetFigure.getCmd())) { // Установка фигуры. Возвращает бывшее значение данной позиции.
+                    valeCmd = cmd.substring(EListCommands.SetFigure.getCmd().length()).trim();
+                    if (valeCmd.length() > 2) {
+                        x = Integer.parseUnsignedInt(valeCmd.substring(0, 1), 16);
+                        y = Integer.parseUnsignedInt(valeCmd.substring(1, 2), 16);
+                        f = Integer.parseUnsignedInt(valeCmd.substring(2, 3), 16);
+                        f = setPosition(x, y, f);
+                        if (f >= 0) {
+                            strTmp = String.format("%x", f);
+                            changes.add(cmd + "@" + strTmp);
+                            return strTmp;
+                        }
+                    }
+                } else if (cmd.startsWith(EListCommands.RemoveFigure.getCmd())) { // Удаление фигуры.
+                    valeCmd = cmd.substring(EListCommands.RemoveFigure.getCmd().length()).trim();
+                    if (valeCmd.length() > 1) {
+                        x = Integer.parseUnsignedInt(valeCmd.substring(0, 1), 16);
+                        y = Integer.parseUnsignedInt(valeCmd.substring(1, 2), 16);
+                        f = removePosition(x, y);
+                        if (f >= 0) {
+                            strTmp = String.format("%x", f);
+                            changes.add(cmd + "@" + strTmp);
+                            return strTmp;
+                        }
+                    }
+                } else if (cmd.startsWith(EListCommands.ClosingWithCancellation.getCmd())) { // Закрытие режима редактирования с отменой изменений.
+                    // TODO: Закрытие с отменой.
+                } else if (cmd.startsWith(EListCommands.ClosingWithAcceptance.getCmd())) { // Закрытие режима редактирования с принятием изменений.
+
+                } else if (cmd.startsWith(EListCommands.Undo.getCmd())) { // Отмена предыдущего изменения.
+                    // TODO: Отмена действия.
+                } else if (cmd.startsWith(EListCommands.Redo.getCmd())) { // Возврат предыдущего отмененного изменения.
+                    // TODO: Возврат отмененного действия.
                 }
-                // TODO: Установка фигуры.
-                // TODO: Удаление фигуры.
-                // TODO: Закрытие с отменой.
-                // TODO: Закрытие с применением.
-                // TODO: Отмена действия.
-                // TODO: Возврат отмененного действия.
             } else if (ETypeState.GameMode == status) { // В режиме игры.
                 // TODO: Выбор позиции фигуры для совершаемого действия.
                 // TODO: Получить список возможных действий для фигуры по выбранной позиции.
@@ -60,9 +96,9 @@ public class ControlBoardCheckers extends ControlBoard {
                     if (boardToStart()) return RESULT_OK;
                 } else if (cmd.startsWith(EListCommands.ChangeColorFigure.getCmd())) { // Задаёт текущий цвет фигур, или следующий цвет.
                     valeCmd = cmd.substring(EListCommands.ChangeColorFigure.getCmd().length()).trim();
-                    if (valeCmd.isEmpty() || '-' == valeCmd.charAt(0)) tmp = -1;
-                    else tmp = Integer.parseUnsignedInt(valeCmd, 16);
-                    if (setColorFigure(tmp)) changes.add(cmd);
+                    if (valeCmd.isEmpty() || '-' == valeCmd.charAt(0)) f = -1;
+                    else f = Integer.parseUnsignedInt(valeCmd, 16);
+                    if (setColorFigure(f)) changes.add(cmd);
                 } else if (cmd.startsWith(EListCommands.SetParamGame.getCmd())) { // Установка внешних параметров игры.
                     valeCmd = cmd.substring(EListCommands.SetParamGame.getCmd().length()).trim();
                     if (setParamGame(valeCmd)) return getStateGame();
@@ -141,6 +177,9 @@ public class ControlBoardCheckers extends ControlBoard {
     }
 
     @Override
+    protected int getPosition(int x, int y) { return board.getPos(x, y); }
+
+    @Override
     protected boolean boardFromStart() {
         if (status == ETypeState.GameMode || status == ETypeState.EditMode) return false;
         board = new GameBoardCheckers((GameBoardCheckers) boardStart);
@@ -204,5 +243,17 @@ public class ControlBoardCheckers extends ControlBoard {
         if (ETypeState.EditMode != status) return false;
         board.setBasePosition();
         return true;
+    }
+
+    @Override
+    protected int setPosition(int x, int y, int f) {
+        if (!(ETypeState.GameMode == status || ETypeState.EditMode == status) || f <= 0 || !fInfo.allAvailableFieldStates().contains(f) || board.getPos(x, y) < 0) return -1;
+        return board.setPos(x, y, f);
+    }
+
+    @Override
+    protected int removePosition(int x, int y) {
+        if (!(ETypeState.GameMode == status || ETypeState.EditMode == status) || board.getPos(x, y) < 0) return -1;
+        return board.setPos(x, y, 0);
     }
 }
