@@ -9,9 +9,7 @@ public enum ETypeState {
     EditMode("e"),              // Режим редактирования.
     GameMode("g");              // Режим игры.
 
-    ETypeState(String strMode) {
-        this.strMode = strMode;
-    }
+    ETypeState(String strMode) { this.strMode = strMode; }
 
     public String getStrMode() { return this.strMode; }
 

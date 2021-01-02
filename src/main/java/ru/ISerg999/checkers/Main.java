@@ -1,5 +1,7 @@
 package ru.ISerg999.checkers;
 
+import ru.ISerg999.checkers.checkersEngine.ControlBoardCheckers;
+import ru.ISerg999.checkers.checkersEngine.EListCommands;
 import ru.ISerg999.checkers.configs.CheckersConfig;
 import ru.ISerg999.checkers.utils.UtilsCollection;
 
@@ -43,6 +45,10 @@ public class Main {
 //        fAS.takeAction("ToInit");
 
         // Test
+        ControlBoardCheckers cbc1 = cCfg.controlBoardCheckers();
+        System.out.println(cbc1.commandExec(EListCommands.GetStatus.getCmd()));
+        cbc1.commandExec(EListCommands.ChangeColorFigure.getCmd() + "-");
+        System.out.println(cbc1.commandExec(EListCommands.GetStatus.getCmd()));
     }
 
 }

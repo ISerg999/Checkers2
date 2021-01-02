@@ -1,13 +1,19 @@
 package ru.ISerg999.checkers.checkersEngine.baseEngine;
 
+import java.util.List;
+
 public abstract class ControlBoard {
     // ---------------------------------------------------- Public -----------------------------------------------------
 
+    public final String RESULT_ERROR = "ERROR";
+    public final String RESULT_OK = "Ok";
+
     /**
-     * Получение текущей состоянии игры в формате JSON.
-     * @return строка текущее состояние игры
+     * Выполнение внешней команды.
+     * @param cmd команда
+     * @return результат выполнения
      */
-    public abstract String getStateGame();
+    public abstract String commandExec(String cmd);
 
     // --------------------------------------------------- Protected ---------------------------------------------------
 
@@ -34,5 +40,29 @@ public abstract class ControlBoard {
      */
     protected abstract boolean checkingSeeFigureOnBoard(int curColor, GameBoard board);
 
+    /**
+     * Получение текущей состоянии игры в формате JSON.
+     * @return строка текущее состояние игры
+     */
+    protected abstract String getStateGame();
+
+    /**
+     * Заполняет текущее расположение фигур на доске из базового расположения.
+     * @return true - действие совершено, false - ошибка, действие не совершено
+     */
+    protected abstract boolean boardFromStart();
+
+    /**
+     * Устанавливает базовое расположение фигур на доске из текущего состояния.
+     * @return true - действие совершено, false - ошибка, действие не совершено
+     */
+    protected abstract boolean boardToStart();
+
+    /**
+     * Задаёт цвет фигуры, которая будет ходить. Если значение отрицательное, то следующая фигура.
+     * @param cFigure цвет фигуры или отрицательное значение
+     * @return true - действие совершено, false - ошибка, действие не совершено
+     */
+    protected abstract boolean setColorFigure(int cFigure);
 
 }
